@@ -3,7 +3,7 @@ import "ng-idle";
 import SessionTimeoutService from "./session-timeout.service";
 
 angular
-    .module("angularSessionTimeout", [
+    .module("angularSessionTimeoutModule", [
         "ngIdle"
     ])
     .service("angularSessionTimeoutService", SessionTimeoutService);

@@ -1,14 +1,14 @@
-﻿import SureidSessionTimeoutService from "./sureid-session-timeout.service";
+﻿import SessionTimeoutService from "./session-timeout.service";
 
-describe("SureidTimeoutService", () => {
+describe("TimeoutService", () => {
     let
         // service
         // createNewService is a method so that if properties of injected services needs to change in a specific test,
         // a new controller can be changed after that service property is changed
         // NOTE: services must be injected in the same order as the real controller
-        service: SureidSessionTimeoutService,
+        service: SessionTimeoutService,
         createNewService = () => {
-            service = new SureidSessionTimeoutService($http, $rootScope, Idle, sureidModalService);
+            service = new SessionTimeoutService($http, $rootScope, Idle, angularModalService);
         },
 
         // injected services
@@ -16,7 +16,7 @@ describe("SureidTimeoutService", () => {
         $httpBackend: ng.IHttpBackendService,
         $rootScope: ng.IRootScopeService,
         Idle: angular.idle.IIdleService,
-        sureidModalService: any,
+        angularModalService: any,
         promiseService: DevScripts.Helpers.PromiseService, // promise service helps resolving service calls
 
         mockApiCall,
@@ -37,16 +37,16 @@ describe("SureidTimeoutService", () => {
         });
     });
 
-    beforeEach(inject((_$http_, _$httpBackend_, _$rootScope_, _Idle_, _sureidModalService_, _promiseService_) => {
+    beforeEach(inject((_$http_, _$httpBackend_, _$rootScope_, _Idle_, _angularModalService_, _promiseService_) => {
         $http = _$http_;
         $httpBackend = _$httpBackend_;
         $rootScope = _$rootScope_;
         promiseService = _promiseService_;
         Idle = _Idle_;
-        sureidModalService = _sureidModalService_;
+        angularModalService = _angularModalService_;
 
         spyOn($http, "get").and.callThrough();
-        spyOn(sureidModalService, "openModal").and.returnValue(promiseService.resolve());
+        spyOn(angularModalService, "openModal").and.returnValue(promiseService.resolve());
         spyOn(Idle, "watch").and.callThrough();
         spyOn(Idle, "unwatch").and.callThrough();
         spyOn(Idle, "setIdle").and.callThrough();

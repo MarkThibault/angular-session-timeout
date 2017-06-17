@@ -1,11 +1,11 @@
-import * as angularSessionTimeoutService from "../../src/index.d";
+import * as angularSessionTimeout from "../../src/index.d";
 
 export default class MainController {
     disableStartWatch: boolean = true;
     static $inject = ["$scope", "angularSessionTimeoutService"];
     constructor(
         private $scope: ng.IScope,
-        private angularSessionTimeoutService: angularSessionTimeoutService
+        private angularSessionTimeoutService: angularSessionTimeout.SessionTimeoutService
     ) {
         this.angularSessionTimeoutService.setup({
             backupUserIdleTimeoutCountdownInSeconds: 5,

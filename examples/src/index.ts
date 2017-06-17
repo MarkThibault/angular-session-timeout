@@ -6,5 +6,5 @@ import "../../dist/angular-session-timeout";
 import MainController from "./main.controller";
 
 angular
-    .module("app", ["angularModal", "angularSessionTimeout"])
+    .module("app", ["angularModalModule", "angularSessionTimeoutModule"])
     .controller("MainController", MainController);

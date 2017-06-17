@@ -1,23 +1,23 @@
 ﻿import * as ngIdle from "angular-idle";
 import * as angularSessionTimeout from "./index.d";
 
-const modalTemplate = require("./sureid-session-timeout-modal.template.html");
+const modalTemplate = require("./session-timeout-modal.template.html");
 let timeoutModal;
 
 export default class TimeoutService {
-    static $inject = ["$http", "$rootScope", "Idle", "sureidModalService"];
+    static $inject = ["$http", "$rootScope", "Idle", "angularModalService"];
 
     constructor(
         private $http: ng.IHttpService,
         private $rootScope: ng.IRootScopeService,
         private Idle: angular.idle.IIdleService,
-        private sureidModalService: any
+        private angularModalService: any
     ) { }
 
     public setup(setupSettings: angularSessionTimeout.SetupSettings) {
         let applyTimeout = (settings: angularSessionTimeout.TimeoutSettings) => {
-            this.onIdleStart(settings.inactiveTimeout, settings.warningDuration);
-            this.onIdleTimeout(settings.warningDuration, setupSettings.callthrough);
+            this.onIdleStart(settings.inactiveTimeoutInSeconds, settings.warningDurationInSeconds);
+            this.onIdleTimeout(settings.warningDurationInSeconds, setupSettings.callthrough);
             this.watch();
         };
 
@@ -55,7 +55,7 @@ export default class TimeoutService {
     private onIdleStart(idleTime: number, timeoutTime: number) {
         this.Idle.setIdle(idleTime);
         this.toggleIdleStartWatch = this.$rootScope.$on("IdleStart", () => {
-            timeoutModal = this.sureidModalService.openModal({
+            timeoutModal = this.angularModalService.openModal({
                 template: modalTemplate
             });
             let toggleOnLocationChange = this.$rootScope.$on("$locationChangeStart", () => {
