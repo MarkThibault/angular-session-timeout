@@ -1,0 +1,73 @@
+{
+  "name": "angular-session-timeout",
+  "version": "1.0.1",
+  "description": "Angular session timeout service uses angular-modal and ng-idle for display time remaining until being signed out.",
+  "main": "src/index.ts",
+  "types": "src/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm prune",
+    "build": "SET NODE_ENV=production && node ./node_modules/webpack/bin/webpack -p --progress",
+    "build:dev": "node ./node_modules/webpack/bin/webpack --progress",
+    "build:debug": "node ./node_modules/webpack/bin/webpack -d --display-reasons --display-chunks --display-modules --display-exclude --display-error-details",
+    "clean": "node clean.js",
+    "serve": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server --inline --open --progress --colors",
+    "serve:prod": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server --inline --open -p --progress --colors",
+    "watch": "node ./node_modules/webpack/bin/webpack --progress --watch",
+    "watch:prod": "node ./node_modules/webpack/bin/webpack -p --progress --watch",
+    "prepublish": "npm run build",
+    "postpublish": "npm run clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarkThibault/angular-session-timeout.git"
+  },
+  "keywords": [
+    "session",
+    "timeout",
+    "idle",
+    "modal"
+  ],
+  "contributors": [
+    "Mark Thibault"
+  ],
+  "license": "",
+  "private": false,
+  "preferGlobal": false,
+  "publishConfig": {
+    "registry": "https://github.com/MarkThibault/angular-session-timeout.git"
+  },
+  "dependencies": {
+    "@types/angular": "^1.6.7",
+    "@types/angular-idle": "^1.1.30",
+    "@types/ng-dialog": "^0.6.0",
+    "@types/node": "^7.0.12",
+    "angular": "1.5.8",
+    "angular-animate": "1.5.8",
+    "ng-idle": "1.3.2",
+    "angular-modal": "https://github.com/MarkThibault/angular-session-timeout.git"
+  },
+  "devDependencies": {
+    "baggage-loader": "0.2.4",
+    "css-loader": "^0.25.0",
+    "del": "2.2.2",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-loader": "0.4.4",
+    "html-webpack-plugin": "^2.22.0",
+    "ngtemplate-loader": "1.3.1",
+    "node-sass": "^3.10.1",
+    "postcss-loader": "^1.0.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "angular-shared-scss": "https://github.com/MarkThibault/angular-shared-scss.git",
+    "ts-loader": "0.9.1",
+    "tslint": "^3.15.1",
+    "tslint-loader": "^2.1.5",
+    "typescript": "2.3.2",
+    "webpack": "1.13.2",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-node-externals": "^1.6.0"
+  }
+}

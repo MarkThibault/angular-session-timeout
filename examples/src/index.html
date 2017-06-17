@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Angular Session Timeout Examples</title>
+		<link rel="icon" type="image/png" href="favicon.png" />
+	</head>
+
+	<body>
+		<main ng-controller="MainController as main">
+			<h1>Session Timeout Demo</h1>
+			<p>Timeout is set to 5 seconds with a 5 second countdown</p>
+			<button class="Button Button--confirm" ng-disabled="main.disableStartWatch" ng-click="main.startWatch()">Start Watch</button>
+			<button class="Button Button--reject" ng-disabled="!main.disableStartWatch" ng-click="main.stopWatch()">Stop Watch</button>
+		</main>
+	</body>
+</html>

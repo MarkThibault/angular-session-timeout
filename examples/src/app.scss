@@ -1,0 +1,11 @@
+@import '~angular-shared-scss/src/index';
+@import '~angular-shared-scss/src/animations';
+@import '~angular-shared-scss/src/buttons';
+
+@import '~angular-modal/src/modal';
+
+body {
+    font-family: sans-serif;
+    color: $cape-cod-1;
+    background-color: $haze-3;
+}
