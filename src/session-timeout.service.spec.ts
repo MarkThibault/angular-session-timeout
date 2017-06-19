@@ -1,12 +1,9 @@
-﻿import SessionTimeoutService from "./session-timeout.service";
+﻿import * as angular from "angular";
+import SessionTimeoutService from "./session-timeout.service";
+import * as angularModal from "angular-modal/src/index.d";
 
 describe("TimeoutService", () => {
-    let
-        // service
-        // createNewService is a method so that if properties of injected services needs to change in a specific test,
-        // a new controller can be changed after that service property is changed
-        // NOTE: services must be injected in the same order as the real controller
-        service: SessionTimeoutService,
+    let service: SessionTimeoutService,
         createNewService = () => {
             service = new SessionTimeoutService($http, $rootScope, Idle, angularModalService);
         },
@@ -16,7 +13,7 @@ describe("TimeoutService", () => {
         $httpBackend: ng.IHttpBackendService,
         $rootScope: ng.IRootScopeService,
         Idle: angular.idle.IIdleService,
-        angularModalService: any,
+        angularModalService: angularModal.ModalService,
         promiseService: DevScripts.Helpers.PromiseService, // promise service helps resolving service calls
 
         mockApiCall,

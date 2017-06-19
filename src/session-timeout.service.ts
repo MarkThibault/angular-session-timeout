@@ -1,8 +1,10 @@
 ﻿import * as ngIdle from "angular-idle";
 import * as angularSessionTimeout from "./index.d";
+import * as ngDialog from "ng-dialog";
+import * as angularModal from "angular-modal/src/index.d";
 
-const modalTemplate = require("./session-timeout-modal.template.html");
-let timeoutModal;
+const modalTemplate: any = require("./session-timeout-modal.template.html");
+let timeoutModal: ngDialog.IDialogOpenResult;
 
 export default class TimeoutService {
     static $inject = ["$http", "$rootScope", "Idle", "angularModalService"];
@@ -11,7 +13,7 @@ export default class TimeoutService {
         private $http: ng.IHttpService,
         private $rootScope: ng.IRootScopeService,
         private Idle: angular.idle.IIdleService,
-        private angularModalService: any
+        private angularModalService: angularModal.ModalService
     ) { }
 
     public setup(setupSettings: angularSessionTimeout.SetupSettings) {
@@ -56,7 +58,8 @@ export default class TimeoutService {
         this.Idle.setIdle(idleTime);
         this.toggleIdleStartWatch = this.$rootScope.$on("IdleStart", () => {
             timeoutModal = this.angularModalService.openModal({
-                template: modalTemplate
+                template: modalTemplate,
+                inj: {}
             });
             let toggleOnLocationChange = this.$rootScope.$on("$locationChangeStart", () => {
                 timeoutModal.close();
